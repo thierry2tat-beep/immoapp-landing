@@ -38,12 +38,14 @@ function ScreenshotPhone({
         </div>
         {/* Safe-area spacer — clears the notch, hides any system status bar */}
         <div style={{ height: 28, background: "#0f1729", flexShrink: 0 }} />
-        {/* Screenshot */}
+        {/* Screenshot — width/height = max render size (3× phone frame = 840px) for crisp HiDPI */}
         <Image
           src={src}
           alt={alt}
-          width={280}
-          height={552}
+          width={840}
+          height={1680}
+          quality={90}
+          sizes="280px"
           loading="lazy"
           style={{ display: "block", width: "100%", height: "calc(100% - 28px)", objectFit: "cover", objectPosition: "top" }}
         />

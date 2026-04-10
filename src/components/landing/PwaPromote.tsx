@@ -46,11 +46,14 @@ function PhoneMockup() {
         {/* Safe-area spacer — same color as the app header, sits behind the notch */}
         <div style={{ height: 28, background: "#0f1729", flexShrink: 0 }} />
         {/* Screenshot starts just below the notch */}
+        {/* width/height = 3× the CSS frame (280px) for crisp HiDPI rendering */}
         <Image
           src="/app-screenshot.jpg"
           alt="ImmoApp — Annonces en vedette"
-          width={280}
-          height={532}
+          width={840}
+          height={1680}
+          quality={90}
+          sizes="280px"
           loading="lazy"
           style={{ display: "block", width: "100%", height: "calc(100% - 28px)", objectFit: "cover", objectPosition: "top" }}
         />

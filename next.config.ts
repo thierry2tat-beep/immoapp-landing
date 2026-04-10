@@ -73,9 +73,14 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // Prefer modern formats: AVIF (best compression) then WebP, fallback to original
     formats: ["image/avif", "image/webp"],
-    deviceSizes: [320, 420, 768, 1024],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Full-width breakpoints
+    deviceSizes: [320, 420, 640, 768, 1024, 1280, 1920],
+    // Fixed-size images (phone mockup = 280px CSS → need 280×1, 560×2, 840×3 for 1×/2×/3× DPR)
+    imageSizes: [16, 32, 64, 96, 128, 256, 280, 560, 840],
+    // Raise global quality floor from default 75 to 85
+    qualities: [85],
   },
   poweredByHeader: false,
 };
