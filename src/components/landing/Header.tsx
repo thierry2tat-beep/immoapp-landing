@@ -31,6 +31,22 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    // Close mobile menu first (restores body overflow via useEffect)
+    setMobileOpen(false);
+    // Wait for menu exit animation (300ms) + overflow restore before scrolling
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 350);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -60,6 +76,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="px-4 py-2 text-sm font-medium text-muted hover:text-white transition-colors rounded-lg hover:bg-white/5"
               >
                 {link.label}
@@ -107,7 +124,7 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="block px-4 py-3 text-base font-medium text-muted hover:text-white hover:bg-card rounded-xl transition-colors"
                 >
                   {link.label}
