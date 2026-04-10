@@ -35,7 +35,7 @@ export function TabsList({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 rounded-xl bg-surface border border-border p-1.5",
+        "flex flex-col sm:flex-row items-stretch sm:items-center gap-1 rounded-xl bg-surface border border-border p-1.5 w-full sm:w-auto",
         className
       )}
     >
@@ -60,7 +60,7 @@ export function TabsTrigger({
     <button
       onClick={() => setActiveTab(value)}
       className={cn(
-        "px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer",
+        "px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer text-center",
         isActive
           ? "bg-primary text-white shadow-md shadow-primary/25"
           : "text-muted hover:text-white hover:bg-card",
@@ -84,5 +84,5 @@ export function TabsContent({
   const { activeTab } = useContext(TabsContext);
   if (activeTab !== value) return null;
 
-  return <div className={cn("mt-8", className)}>{children}</div>;
+  return <div className={cn("mt-8 w-full", className)}>{children}</div>;
 }

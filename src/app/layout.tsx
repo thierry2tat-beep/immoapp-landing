@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import CookieConsent from "@/components/landing/CookieConsent";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -46,7 +47,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${poppins.variable} ${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

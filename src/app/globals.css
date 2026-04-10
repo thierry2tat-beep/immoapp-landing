@@ -36,6 +36,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -144,6 +145,16 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, transparent 25%, rgba(59, 130, 246, 0.1) 50%, transparent 75%);
   background-size: 200% 100%;
   animation: shimmer 3s infinite;
+}
+
+/* Cookie banner slide up */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {

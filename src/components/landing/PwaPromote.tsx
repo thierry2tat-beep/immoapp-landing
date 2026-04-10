@@ -61,13 +61,13 @@ function PhoneMockup() {
 
 export default function PwaPromote() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-20 lg:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Phone mockup */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="flex-shrink-0"
@@ -77,11 +77,11 @@ export default function PwaPromote() {
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="flex-1"
+            className="flex-1 w-full min-w-0"
           >
             <Badge variant="primary" className="mb-4">
               Application mobile
@@ -99,8 +99,8 @@ export default function PwaPromote() {
               {pwaFeatures.map((feature, i) => (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   className="flex items-start gap-4 group"

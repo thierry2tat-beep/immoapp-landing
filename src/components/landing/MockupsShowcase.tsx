@@ -55,9 +55,9 @@ function ScreenshotPhone({
 /* ─── Laptop frame ─── */
 function LaptopFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-full" style={{ maxWidth: 860 }}>
+    <div className="relative w-full overflow-hidden" style={{ maxWidth: 860 }}>
       {/* Soft glow behind the whole laptop */}
-      <div className="absolute inset-0 -m-12 rounded-full blur-3xl opacity-40"
+      <div className="absolute inset-0 rounded-full blur-3xl opacity-40"
            style={{ background: "radial-gradient(ellipse, #3b82f620 0%, transparent 70%)" }} />
 
       <div className="relative">
@@ -307,7 +307,7 @@ function MapViewScreen() {
   return (
     <div style={{ height: "100%", position: "relative", overflow: "hidden", background: "#e8f0e8" }}>
       {/* Real Leaflet map fills the entire screen */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+      <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
         <CotonnouMap />
       </div>
 

@@ -46,8 +46,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Badge variant="primary" className="mb-6 text-base">
-              🇧🇯 La plateforme immobilière de référence au Bénin
+            <Badge variant="primary" className="mb-6 text-xs sm:text-sm">
+              🇧🇯{" "}
+              <span className="hidden sm:inline">La plateforme immobilière de référence au Bénin</span>
+              <span className="sm:hidden">Plateforme immobilière au Bénin</span>
             </Badge>
           </motion.div>
 

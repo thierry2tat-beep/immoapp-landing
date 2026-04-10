@@ -5,8 +5,8 @@ const navLinks = [
   { label: "Rechercher", href: "https://immoapp.net" },
   { label: "Publier une annonce", href: "https://immoapp.net/publish" },
   { label: "Tarifs", href: "https://immoapp.net/pricing" },
-  { label: "Conditions d'utilisation", href: "https://immoapp.net/terms" },
-  { label: "Politique de confidentialité", href: "https://immoapp.net/privacy" },
+  { label: "Conditions d'utilisation", href: "/terms" },
+  { label: "Politique de confidentialité", href: "/privacy" },
 ];
 
 const cities = [
@@ -46,18 +46,22 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-2.5">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const isExternal = link.href.startsWith("http");
+                return (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      {...(isExternal
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="text-sm text-muted hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

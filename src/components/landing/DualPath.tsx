@@ -139,7 +139,7 @@ export default function DualPath() {
           </p>
         </motion.div>
 
-        <Tabs defaultValue="locataire" className="flex flex-col items-center">
+        <Tabs defaultValue="locataire" className="flex flex-col items-center w-full">
           <TabsList className="mb-0">
             <TabsTrigger value="locataire">🏠 Je suis locataire</TabsTrigger>
             <TabsTrigger value="proprietaire">🔑 Je suis propriétaire</TabsTrigger>
