@@ -42,7 +42,7 @@ export default function Header() {
     setTimeout(() => {
       const target = document.querySelector(href);
       if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        target.scrollIntoView({ behavior: "instant", block: "start" });
       }
     }, 350);
   };
