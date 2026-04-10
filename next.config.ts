@@ -77,10 +77,8 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     // Full-width breakpoints
     deviceSizes: [320, 420, 640, 768, 1024, 1280, 1920],
-    // Fixed-size images (phone mockup = 280px CSS → need 280×1, 560×2, 840×3 for 1×/2×/3× DPR)
-    imageSizes: [16, 32, 64, 96, 128, 256, 280, 560, 840],
-    // Raise global quality floor from default 75 to 85
-    qualities: [85],
+    // Fixed phone frame = 280px CSS → srcSet: 260/280 (1×), 560 (2×), 840 (3×), 1080 (max)
+    imageSizes: [16, 32, 64, 96, 128, 256, 260, 280, 560, 840, 1080],
   },
   poweredByHeader: false,
 };
