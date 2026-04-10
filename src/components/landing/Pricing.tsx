@@ -23,6 +23,8 @@ type Plan = {
   ctaVariant: "outline" | "primary" | "accent";
   badge: { label: string; variant: "primary" | "accent" } | null;
   cardClass: string;
+  /** Exact background colour of the card — used for the mobile fade gradient */
+  fadeColor: string;
 };
 
 const plans: Plan[] = [
@@ -32,15 +34,16 @@ const plans: Plan[] = [
     description: "Pour commencer à publier vos annonces gratuitement",
     badge: null,
     cardClass: "border-border bg-card hover:border-primary/30",
+    fadeColor: "#1e293b",
     features: [
-      { icon: FileText, label: "3 annonces par mois",                    included: true  },
-      { icon: Camera,   label: "3 photos par annonce",                   included: true  },
-      { icon: Search,   label: "Affichage standard",                     included: true  },
-      { icon: Check,    label: "Annonce visible dans les recherches",     included: true  },
-      { icon: Zap,      label: "0 crédit boost inclus",                  included: false },
-      { icon: ArrowUp,  label: "Remontée en tête de liste",              included: false },
-      { icon: Sparkles, label: "Mise en avant dans \"Annonces récentes\"",included: false },
-      { icon: Clock,    label: "Durée boost : 0H",                       included: false },
+      { icon: FileText, label: "3 annonces par mois",                     included: true  },
+      { icon: Camera,   label: "3 photos par annonce",                    included: true  },
+      { icon: Search,   label: "Affichage standard",                      included: true  },
+      { icon: Check,    label: "Annonce visible dans les recherches",      included: true  },
+      { icon: Zap,      label: "0 crédit boost inclus",                   included: false },
+      { icon: ArrowUp,  label: "Remontée en tête de liste",               included: false },
+      { icon: Sparkles, label: "Mise en avant dans \"Annonces récentes\"", included: false },
+      { icon: Clock,    label: "Durée boost : 0H",                        included: false },
     ],
     cta: "Essayer",
     ctaVariant: "outline",
@@ -51,15 +54,16 @@ const plans: Plan[] = [
     description: "Pour les propriétaires qui veulent plus de visibilité",
     badge: null,
     cardClass: "border-primary bg-card-elevated shadow-xl shadow-primary/10 scale-[1.02] lg:scale-105",
+    fadeColor: "#253347",
     features: [
-      { icon: FileText, label: "8 annonces par mois",                          included: true },
-      { icon: Camera,   label: "8 photos par annonce",                         included: true },
-      { icon: Search,   label: "Affichage prioritaire dans les recherches",    included: true },
-      { icon: Check,    label: "Annonce visible dans les recherches",          included: true },
-      { icon: Zap,      label: "3 crédits boost / mois",                       included: true },
-      { icon: ArrowUp,  label: "Remontée en tête de liste",                    included: true },
-      { icon: Sparkles, label: "Mise en avant dans \"Annonces récentes\"",     included: true },
-      { icon: Clock,    label: "Durée boost : 24H",                            included: true },
+      { icon: FileText, label: "8 annonces par mois",                           included: true },
+      { icon: Camera,   label: "8 photos par annonce",                          included: true },
+      { icon: Search,   label: "Affichage prioritaire dans les recherches",     included: true },
+      { icon: Check,    label: "Annonce visible dans les recherches",           included: true },
+      { icon: Zap,      label: "3 crédits boost / mois",                        included: true },
+      { icon: ArrowUp,  label: "Remontée en tête de liste",                     included: true },
+      { icon: Sparkles, label: "Mise en avant dans \"Annonces récentes\"",      included: true },
+      { icon: Clock,    label: "Durée boost : 24H",                             included: true },
     ],
     cta: "Choisir Pro",
     ctaVariant: "primary",
@@ -70,15 +74,16 @@ const plans: Plan[] = [
     description: "Visibilité maximale pour louer rapidement",
     badge: null,
     cardClass: "border-accent/60 bg-card hover:border-accent/80",
+    fadeColor: "#1e293b",
     features: [
-      { icon: FileText, label: "12 annonces par mois",                         included: true },
-      { icon: Camera,   label: "12 photos par annonce",                        included: true },
-      { icon: Search,   label: "Affichage en tête des recherches",             included: true },
-      { icon: Check,    label: "Annonce visible dans les recherches",          included: true },
-      { icon: Zap,      label: "10 crédits boost / mois",                      included: true },
-      { icon: ArrowUp,  label: "Remontée automatique en tête de liste",        included: true },
-      { icon: Sparkles, label: "Affichage en haut de \"Annonces récentes\"",   included: true },
-      { icon: Clock,    label: "Durée boost : 72H",                            included: true },
+      { icon: FileText, label: "12 annonces par mois",                          included: true },
+      { icon: Camera,   label: "12 photos par annonce",                         included: true },
+      { icon: Search,   label: "Affichage en tête des recherches",              included: true },
+      { icon: Check,    label: "Annonce visible dans les recherches",           included: true },
+      { icon: Zap,      label: "10 crédits boost / mois",                       included: true },
+      { icon: ArrowUp,  label: "Remontée automatique en tête de liste",         included: true },
+      { icon: Sparkles, label: "Affichage en haut de \"Annonces récentes\"",    included: true },
+      { icon: Clock,    label: "Durée boost : 72H",                             included: true },
     ],
     cta: "Choisir Premium",
     ctaVariant: "accent",
@@ -96,9 +101,7 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <Badge variant="primary" className="mb-4">
-            Tarifs
-          </Badge>
+          <Badge variant="primary" className="mb-4">Tarifs</Badge>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading mb-4">
             Des offres adaptées à{" "}
             <span className="gradient-text">vos besoins</span>
@@ -117,8 +120,9 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative rounded-2xl border p-6 lg:p-8 transition-all duration-300 ${plan.cardClass}`}
+              className={`relative rounded-2xl border flex flex-col transition-all duration-300 ${plan.cardClass}`}
             >
+              {/* Badge (optionnel) */}
               {plan.badge && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                   <Badge variant={plan.badge.variant} className="gap-1">
@@ -128,53 +132,71 @@ export default function Pricing() {
                 </div>
               )}
 
-              <div className="mb-6">
+              {/* ── HEADER : nom + prix — toujours visible ── */}
+              <div className="px-6 pt-6 pb-4 lg:px-8 lg:pt-8">
                 <h3 className="text-xl font-bold text-white font-heading">{plan.name}</h3>
                 <p className="text-sm text-muted mt-1">{plan.description}</p>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-white font-heading">{plan.price}</span>
+                  <span className="text-lg text-muted"> FCFA / mois</span>
+                </div>
               </div>
 
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-white font-heading">{plan.price}</span>
-                <span className="text-lg text-muted"> FCFA / mois</span>
+              {/* ── FEATURES : tronquées + fade sur mobile ── */}
+              <div className="relative px-6 lg:px-8 overflow-hidden
+                              max-h-[138px] sm:max-h-none">
+                <ul className="space-y-3">
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature.label}
+                      className={`flex items-start gap-3 ${!feature.included ? "opacity-40" : ""}`}
+                    >
+                      <feature.icon
+                        className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
+                          feature.included ? "text-primary" : "text-muted"
+                        }`}
+                      />
+                      <span className="text-sm text-muted flex-1">{feature.label}</span>
+                      <div
+                        className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                          feature.included ? "bg-primary/10" : "bg-border"
+                        }`}
+                      >
+                        {feature.included
+                          ? <Check className="w-3 h-3 text-primary" />
+                          : <X className="w-3 h-3 text-muted" />}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Gradient fade — mobile uniquement */}
+                <div
+                  className="sm:hidden absolute bottom-0 inset-x-0 h-20 pointer-events-none"
+                  style={{
+                    background: `linear-gradient(to top, ${plan.fadeColor} 15%, transparent 100%)`,
+                  }}
+                />
               </div>
 
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature) => (
-                  <li
-                    key={feature.label}
-                    className={`flex items-start gap-3 ${!feature.included ? "opacity-40" : ""}`}
-                  >
-                    {/* Feature icon */}
-                    <feature.icon className={`w-4 h-4 flex-shrink-0 mt-0.5 ${feature.included ? "text-primary" : "text-muted"}`} />
-                    <span className="text-sm text-muted flex-1">{feature.label}</span>
-                    {/* Check / X marker */}
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                      feature.included ? "bg-primary/10" : "bg-border"
-                    }`}>
-                      {feature.included
-                        ? <Check className="w-3 h-3 text-primary" />
-                        : <X className="w-3 h-3 text-muted" />
-                      }
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="https://immoapp.net/pricing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  variant={plan.ctaVariant}
-                  size="lg"
-                  className="w-full gap-2"
-                  disabled={plan.ctaVariant === "outline"}
+              {/* ── CTA : toujours visible, poussé en bas sur desktop ── */}
+              <div className="px-6 pb-6 pt-5 lg:px-8 lg:pb-8 mt-auto">
+                <a
+                  href="https://immoapp.net/pricing"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {plan.ctaVariant !== "outline" && <Rocket className="w-4 h-4" />}
-                  {plan.cta}
-                </Button>
-              </a>
+                  <Button
+                    variant={plan.ctaVariant}
+                    size="lg"
+                    className="w-full gap-2"
+                    disabled={plan.ctaVariant === "outline"}
+                  >
+                    {plan.ctaVariant !== "outline" && <Rocket className="w-4 h-4" />}
+                    {plan.cta}
+                  </Button>
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
