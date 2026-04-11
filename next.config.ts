@@ -79,6 +79,7 @@ const nextConfig: NextConfig = {
     deviceSizes: [320, 420, 640, 768, 1024, 1280, 1920],
     // Fixed phone frame = 280px CSS → srcSet: 260/280 (1×), 560 (2×), 840 (3×), 1080 (max)
     imageSizes: [16, 32, 64, 96, 128, 256, 260, 280, 560, 840, 1080],
+    qualities: [75, 88],
   },
   poweredByHeader: false,
 };
