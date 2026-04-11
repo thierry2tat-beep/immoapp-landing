@@ -84,7 +84,6 @@ export default function CityMap() {
                     <h3 className="font-semibold text-white font-heading group-hover:text-primary transition-colors">
                       {city.name}
                     </h3>
-                    <span className="text-xs text-accent font-medium">{city.listings}</span>
                   </div>
                   <div className="flex flex-wrap gap-1 mt-2">
                     {city.neighborhoods.map((n) => (
