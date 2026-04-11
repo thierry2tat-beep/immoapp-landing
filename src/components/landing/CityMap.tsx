@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const cities = [
   { name: "Cotonou", listings: "200+", neighborhoods: ["Fidjrossè", "Akpakpa", "Haie-Vive", "Cadjèhoun", "Gbégamey", "Mènontin"], highlight: true },
-  { name: "Abomey-Calavi", listings: "120+", neighborhoods: ["Calavi Centre", "Togbin", "Akassato"], highlight: true },
+  { name: "Abomey-Calavi", listings: "120+", neighborhoods: ["Calavi Centre", "Togbin", "Akassato"], highlight: false },
   { name: "Porto-Novo", listings: "60+", neighborhoods: ["Ouando", "Djassin", "Akonaboè"], highlight: false },
   { name: "Parakou", listings: "40+", neighborhoods: ["Banikanni", "Titirou", "Guéma"], highlight: false },
   { name: "Ouidah", listings: "25+", neighborhoods: ["Centre", "Pahou", "Avlékété"], highlight: false },
