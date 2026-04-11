@@ -8,7 +8,7 @@ const trustFeatures = [
   {
     icon: ShieldCheck,
     title: "Validation OTP",
-    description: "Chaque utilisateur est vérifié par un code unique envoyé par SMS ou email.",
+    description: "Chaque utilisateur est vérifié par un code unique envoyé par SMS ou via un lien de confirmation par email.",
   },
   {
     icon: UserCheck,
